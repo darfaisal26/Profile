@@ -1,103 +1,321 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect } from "react";
+import { Badge } from "../components/ui/badge.jsx";
+import { Button } from "../components/ui/button.jsx";
+import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs.jsx";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Code,
+  Server,
+  Settings2,
+} from "lucide-react";
+import {
+  personalInfo,
+  skillIcons,
+  workExperience,
+  projects,
+} from "../data/info";
+import ClientOnly from "@/components/ClientOnly.jsx";
+import AboutTab from "@/components/About.jsx";
+import SkillsTab from "@/components/skills.jsx";
+import ExperienceTab from "@/components/Experience.jsx";
+import ProjectsTab from "@/components/projects.jsx";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+const Portfolio = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [activeTab, setActiveTab] = useState("about");
+  const [isVisible, setIsVisible] = useState({});
+
+  console.log(isVisible);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const FloatingParticles = () => (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      {[...Array(50)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${10 + Math.random() * 20}s`,
+          }}
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      ))}
     </div>
   );
-}
+
+  const skills = [
+    {
+      category: "Frontend Development",
+      items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"],
+      icon: <Code className="w-8 h-8 text-cyan-400" />,
+      gradient: "from-cyan-500 via-blue-500 to-purple-600",
+      delay: "0ms",
+    },
+    {
+      category: "Backend Development",
+      items: ["Node.js", "Express", "Sql", "Mysql"],
+      icon: <Server className="w-8 h-8 text-emerald-400" />,
+      gradient: "from-emerald-500 via-teal-500 to-cyan-600",
+      delay: "200ms",
+    },
+    {
+      category: "State Mangement &  Development Tools & Libraries",
+      items: [
+        "React Redux",
+        "Redux Toolkit",
+        "React Query",
+        "Zustand",
+        "React Hook Form",
+        "Zod",
+        "RTK Query",
+      ],
+      icon: <Settings2 className="w-8 h-8 text-purple-400" />,
+      gradient: "from-green-500 via-lime-500 to-yellow-400",
+      delay: "200ms",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white overflow-hidden relative">
+      {/* Animated Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(34,197,94,0.1),transparent_70%)]" />
+      </div>
+
+      {/* Floating Particles */}
+      <ClientOnly>
+        <FloatingParticles />
+      </ClientOnly>
+
+      {/* Animated Grid */}
+      <div className="fixed inset-0 opacity-[0.02]">
+        <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto p-6">
+        {/* Header */}
+        <div
+          className="text-center mb-20 animate-fade-in-up"
+          data-animate
+          id="header"
+        >
+          <div className="relative inline-block mb-10">
+            <div className="w-48 h-48 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-white text-6xl font-bold shadow-2xl border-4 border-white/20 hover:scale-110 transition-all duration-500 animate-float">
+              {personalInfo.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-4 border-gray-900 animate-pulse shadow-lg">
+              <div className="w-full h-full rounded-full bg-green-400 animate-ping" />
+            </div>
+            {/* Floating icons around avatar */}
+            <div className="absolute -top-8 -left-8 text-3xl animate-bounce animation-delay-1000">
+              ⚡
+            </div>
+            <div className="absolute -top-8 -right-8 text-3xl animate-bounce animation-delay-2000">
+              🚀
+            </div>
+            <div className="absolute -bottom-8 -left-8 text-3xl animate-bounce animation-delay-3000">
+              💎
+            </div>
+          </div>
+
+          <h1 className="text-6xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4 animate-gradient-x">
+            {personalInfo.name}
+          </h1>
+          <p className="text-3xl text-blue-300 mb-8 font-light animate-fade-in-up animation-delay-500">
+            {personalInfo.title}
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-300 mb-10">
+            {[
+              {
+                icon: <Mail className="w-5 h-5 text-cyan-400" />,
+                text: personalInfo.email,
+                color: "from-cyan-500 to-blue-600",
+              },
+              {
+                icon: <Phone className="w-5 h-5 text-green-400" />,
+                text: personalInfo.phone,
+                color: "from-green-500 to-emerald-600",
+              },
+              {
+                icon: <MapPin className="w-5 h-5 text-pink-400" />,
+                text: personalInfo.location,
+                color: "from-pink-500 to-rose-600",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`flex items-center space-x-3 bg-gradient-to-r ${item.color} p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up backdrop-blur-sm border border-white/10`}
+                style={{ animationDelay: `${600 + index * 100}ms` }}
+              >
+                {item.icon}
+                <span className="text-white font-medium">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center space-x-6 animate-fade-in-up animation-delay-1000">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4 rounded-2xl"
+              asChild
+            >
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="w-6 h-6 mr-3" />
+                GitHub
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4 rounded-2xl"
+              asChild
+            >
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="w-6 h-6 mr-3" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto mb-16 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-2xl p-2 shadow-2xl">
+            {[
+              {
+                value: "about",
+                label: "About",
+                gradient: "from-cyan-500 to-blue-600",
+              },
+              {
+                value: "skills",
+                label: "Skills",
+                gradient: "from-purple-500 to-pink-600",
+              },
+              {
+                value: "experience",
+                label: "Experience",
+                gradient: "from-emerald-500 to-teal-600",
+              },
+              {
+                value: "work",
+                label: "Live Projects Work",
+                gradient: "from-orange-500 to-red-600",
+              },
+            ].map((tab) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className={`text-white font-medium py-4 px-6 rounded-xl transition-all duration-300 ${
+                  activeTab === tab.value
+                    ? `bg-gradient-to-r ${tab.gradient} shadow-lg transform scale-105`
+                    : "hover:bg-gray-700/50"
+                }`}
+              >
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          <AboutTab personalInfo={personalInfo} />
+          <SkillsTab skills={skills} skillIcons={skillIcons} />
+          <ExperienceTab
+            workExperience={workExperience}
+            skillIcons={skillIcons}
+          />
+          <ProjectsTab
+            projects={projects}
+            skillIcons={skillIcons}
+            setSelectedImage={setSelectedImage}
+          />
+        </Tabs>
+
+        <Dialog
+          open={!!selectedImage}
+          onOpenChange={() => setSelectedImage(null)}
+        >
+          <DialogContent className="max-w-6xl bg-gray-800/95 backdrop-blur-md border border-gray-700 text-white animate-fade-in-scale">
+            <DialogHeader>
+              <DialogTitle className="text-3xl bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                {selectedImage?.title}
+              </DialogTitle>
+              <DialogDescription className="text-xl text-gray-300">
+                {selectedImage?.description}
+              </DialogDescription>
+            </DialogHeader>
+            {selectedImage && (
+              <div className="mt-8">
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                />
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mt-8">
+                  <div className="flex flex-wrap gap-3">
+                    {selectedImage.technologies.map((tech, index) => (
+                      <Badge
+                        key={index}
+                        className={`bg-gradient-to-r ${selectedImage.gradient} text-white border-0 text-base px-4 py-2`}
+                      >
+                        <span className="mr-2">{skillIcons[tech] || "🔧"}</span>
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                  <div className="flex space-x-4">
+                    {/* Add your modal action buttons or content here if needed */}
+                  </div>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+      </div>
+    </div>
+  );
+};
+
+export default Portfolio;
