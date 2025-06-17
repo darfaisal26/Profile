@@ -156,7 +156,7 @@ export const projects = [
       "A mobile application designed to monitor and track real-time power consumption for households and businesses. Developed using React Native, Vetic allows users to view energy usage, set consumption goals, and receive notifications on power-saving tips",
     technologies: ["React Native", "Tailwind CSS"],
     image:
-      "https://as1.ftcdn.net/jpg/02/46/76/94/1000_F_246769427_AJQrUAo3fjOYAhzBCHiLm7ggtthB8zO9.jpg",
+      "https://cdn.dribbble.com/userupload/17603308/file/original-744935f2c4583e789a9feddbf02df1e9.png?format=webp&resize=400x300&vertical=center",
     githubUrl: "#",
     featured: false,
     gradient: "from-purple-500 to-indigo-600",
