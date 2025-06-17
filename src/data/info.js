@@ -1,3 +1,8 @@
+import lb from "../../public/lb.png";
+import memo from "../../public/memo.png";
+import tt from "../../public/tt.png";
+import ptm from "../../public/ptm.png";
+
 export const personalInfo = {
   name: "Faisal Nazir",
   title: "Full Stack Developer ",
@@ -78,7 +83,7 @@ export const projects = [
       "Redux Toolkit",
       "React Query",
     ],
-    image: "https://github.com/darfaisal26/PersonalPortfolio/blob/main/public/Screenshot%20(33).png?raw=true",
+    image: memo.src,
     liveUrl: "#",
     githubUrl: "#",
     featured: true,
@@ -97,7 +102,7 @@ export const projects = [
       "Redux Toolkit",
       "React Query",
     ],
-    image: "https://github.com/darfaisal26/PersonalPortfolio/blob/main/public/Screenshot%20(80).png?raw=true",
+    image: lb.src,
     liveUrl: "#",
     githubUrl: "#",
     featured: true,
@@ -115,10 +120,8 @@ export const projects = [
       "Tailwind CSS",
       "Redux Toolkit",
       "React Query",
-      ],
-    image:"https://github.com/darfaisal26/PersonalPortfolio/blob/main/public/Screenshot%20(19).png?raw=true",
-    // image:
-    //   "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=500&fit=crop&auto=format",
+    ],
+    image: ptm.src,
     // liveUrl: "#",
     githubUrl: "#",
     featured: false,
@@ -141,8 +144,7 @@ export const projects = [
     description:
       "Traesury Today is a digital magazine dedicated to delivering in-depth analysis and insights on finance, business, corporate strategies, and banking trends. allowing readers to explore a wide range of topics including market analysis, investment strategies, corporate governance, and financial regulations. The magazine features expert interviews, opinion pieces, and timely articles that cater to finance professionals and corporate leaders. Integrated with a content management system (CMS) for seamless publishing and updates.",
     technologies: ["HTML", "CSS", "Sql", "Mysql"],
-    image:
-      "https://github.com/darfaisal26/PersonalPortfolio/blob/main/public/TT2.png?raw=true",
+    image: tt.src,
     liveUrl: "#",
     githubUrl: "#",
     featured: false,
@@ -154,7 +156,7 @@ export const projects = [
       "A mobile application designed to monitor and track real-time power consumption for households and businesses. Developed using React Native, Vetic allows users to view energy usage, set consumption goals, and receive notifications on power-saving tips",
     technologies: ["React Native", "Tailwind CSS"],
     image:
-      "https://github.com/darfaisal26/PersonalPortfolio/blob/main/public/iPhone%2014%20Plus%20-%2016%20(1).jpg?raw=true",
+      "https://as1.ftcdn.net/jpg/02/46/76/94/1000_F_246769427_AJQrUAo3fjOYAhzBCHiLm7ggtthB8zO9.jpg",
     githubUrl: "#",
     featured: false,
     gradient: "from-purple-500 to-indigo-600",

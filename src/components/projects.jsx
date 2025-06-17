@@ -1,8 +1,12 @@
 import { Badge } from "./ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { TabsContent } from "./ui/tabs";
+// import lb from "../../public/lb.png";
+// import memo from "../../public/memo.png";
 
+// const fallbackImages = [memo];
 
+// console.log("fa", fallbackImages);
 const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
   <TabsContent value="work" className="animate-fade-in-up">
     <div className="grid lg:grid-cols-2 gap-10 max-w-8xl mx-auto">
@@ -25,6 +29,7 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
               }`}
               onClick={() => setSelectedImage(project)}
             />
+
             <div
               className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-0 group-hover:opacity-60 transition-opacity duration-500`}
             />
@@ -49,9 +54,7 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
                     animationDelay: `${index * 150 + techIndex * 50}ms`,
                   }}
                 >
-                  <span className="mr-2">
-                    {skillIcons[tech] || "🔧"}
-                  </span>
+                  <span className="mr-2">{skillIcons[tech] || "🔧"}</span>
                   {tech}
                 </Badge>
               ))}
@@ -62,4 +65,4 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
     </div>
   </TabsContent>
 );
-export default ProjectsTab
+export default ProjectsTab;
