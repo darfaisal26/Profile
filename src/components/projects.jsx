@@ -24,7 +24,7 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
             <img
               src={project.image}
               alt={project.title}
-              className={`w-full object-contain group-hover:scale-110 transition-transform duration-700 cursor-pointer ${
+              className={`w-full object-contain lg:object-cover group-hover:scale-110 transition-transform duration-700 cursor-pointer ${
                 project.featured ? "h-80" : "h-64"
               }`}
               onClick={() => setSelectedImage(project)}
