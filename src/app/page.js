@@ -223,7 +223,7 @@ const Portfolio = () => {
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-4 w-full max-w-2xl mx-auto mb-16 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-2xl p-2 shadow-2xl">
+          <TabsList className="grid grid-cols-2  lg:grid-cols-4 w-full max-w-2xl mx-auto mb-16 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-2xl p-2 shadow-2xl">
             {[
               {
                 value: "about",

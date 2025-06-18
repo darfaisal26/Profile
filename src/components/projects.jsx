@@ -24,7 +24,7 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
             <img
               src={project.image}
               alt={project.title}
-              className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 cursor-pointer ${
+              className={`w-full object-contain group-hover:scale-110 transition-transform duration-700 cursor-pointer ${
                 project.featured ? "h-80" : "h-64"
               }`}
               onClick={() => setSelectedImage(project)}
@@ -36,20 +36,20 @@ const ProjectsTab = ({ projects, skillIcons, setSelectedImage }) => (
           </div>
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center justify-between text-2xl">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r flex flex-wrap lg:whitespace-normal from-white to-gray-300 bg-clip-text text-transparent">
                 {project.title}
               </span>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-300 mb-6 leading-relaxed text-lg">
+            <p className="text-gray-300 mb-6 flex flex-wrap lg:whitespace-normal leading-relaxed text-lg">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-3">
               {project.technologies.map((tech, techIndex) => (
                 <Badge
                   key={techIndex}
-                  className={`bg-gradient-to-r ${project.gradient} text-white border-0 shadow-md text-base px-4 py-2 hover:scale-105 transition-transform animate-fade-in-up`}
+                  className={`bg-gradient-to-r w-full md:w-auto ${project.gradient} text-white border-0 shadow-md text-base px-4 py-2 hover:scale-105 transition-transform animate-fade-in-up`}
                   style={{
                     animationDelay: `${index * 150 + techIndex * 50}ms`,
                   }}
