@@ -31,6 +31,7 @@ import AboutTab from "@/components/About.jsx";
 import SkillsTab from "@/components/skills.jsx";
 import ExperienceTab from "@/components/Experience.jsx";
 import ProjectsTab from "@/components/projects.jsx";
+import Image from "next/image.js";
 
 const Portfolio = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -108,11 +109,11 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden relative">
       {/* Animated Background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+      {/* <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(147,51,234,0.1),transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(34,197,94,0.1),transparent_70%)]" />
-      </div>
+      </div> */}
 
       {/* Floating Particles */}
       <ClientOnly>
@@ -133,10 +134,17 @@ const Portfolio = () => {
         >
           <div className="relative inline-block mb-10">
             <div className="w-48 h-48 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-white text-6xl font-bold shadow-2xl border-4 border-white/20 hover:scale-110 transition-all duration-500 animate-float">
-              {personalInfo.name
+              {/* {personalInfo.name
                 .split(" ")
                 .map((n) => n[0])
-                .join("")}
+                .join("")} */}
+              <Image
+                src="https://media.licdn.com/dms/image/v2/D5603AQENjpHzpGedNA/profile-displayphoto-shrink_800_800/B56ZeIrv4lGQAo-/0/1750344860993?e=1755734400&v=beta&t=dM88rD-8Te5Ccvo_APYjQGHO_rVcREN1YaOHevHrquw"
+                alt="FN"
+                width={80}
+                height={80}
+                className="w-full rounded-full"
+              />
             </div>
             <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-4 border-gray-900 animate-pulse shadow-lg">
               <div className="w-full h-full rounded-full bg-green-400 animate-ping" />
@@ -223,7 +231,7 @@ const Portfolio = () => {
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-2  lg:grid-cols-4 w-full max-w-2xl mx-auto mb-16 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-2xl p-2 shadow-2xl">
+          <TabsList className="grid grid-cols-2  lg:grid-cols-4 w-full max-w-2xl mx-auto mb-16 bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-2xl  shadow-2xl">
             {[
               {
                 value: "about",
