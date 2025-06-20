@@ -6,7 +6,7 @@ import ptm from "../../public/ptm.png";
 export const personalInfo = {
   name: "Faisal Nazir",
   title: "Full Stack Developer ",
-  email: "iamfaisal@email.com",
+  email: "iamfaisal77@gmail.com",
   phone: "9596438189",
   location: "Srinagar J&K India",
   github: "https://github.com/darfaisal26",
