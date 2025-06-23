@@ -5,13 +5,15 @@ import ptm from "../../public/ptm.png";
 
 export const personalInfo = {
   name: "Faisal Nazir",
-  title: "Full Stack Developer ",
+  title: "Full Stack Developer",
   email: "iamfaisal779@gmail.com",
   phone: "9596438189",
   location: "Srinagar J&K India",
   github: "https://github.com/darfaisal26",
   linkedin: "https://www.linkedin.com/in/faisal-nazir-31ba22244/",
   bio: "Full-stack developer with 2+ years of experience building robust, scalable web applications from concept to deployment. Proficient in modern frontend frameworks and backend technologies, with a strong focus on performance optimization and user experience. I thrive on solving complex problems through clean, maintainable code and enjoy collaborating across teams to deliver innovative digital solutions that drive business growth.",
+  avatar:
+    "https://media.licdn.com/dms/image/v2/D5603AQENjpHzpGedNA/profile-displayphoto-shrink_800_800/B56ZeIrv4lGQAo-/0/1750344860993?e=1755734400&v=beta&t=dM88rD-8Te5Ccvo_APYjQGHO_rVcREN1YaOHevHrquw",
 };
 
 export const skillIcons = {
@@ -39,11 +41,38 @@ export const skillIcons = {
   "Azure Boards": "📋",
 };
 
+export const skills = {
+  "Frontend Development": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+  ],
+  "Backend Development": ["Node.js", "Express", "Mysql", "MongoDB", "Sql"],
+  "State Management": [
+    "React Redux",
+    "Redux Toolkit",
+    "Zustand",
+    "React Query",
+    "RTK Query",
+  ],
+  "Tools & Others": [
+    "Git",
+    "Azure Boards",
+    "React Hook Form",
+    "Zod",
+    "React Native",
+  ],
+};
+
 export const workExperience = [
   {
     company: "Aseef It Holding Co.",
     position: "Full Stack Developer",
-    duration: "2023 March - Present",
+    duration: "March 2023 - Present",
     location: "Srinagar J&K India",
     description: [
       "Built and deployed full-stack web applications using React.js, Next.js (with SSR), Express.js, and MySQL, delivering scalable, production-ready solutions for real-world business needs",
@@ -69,11 +98,36 @@ export const workExperience = [
   },
 ];
 
+export const education = [
+  {
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "Amar Singh College ",
+    period: "2017 May - 2020 Aug",
+    grade: "First Class",
+    achievements: [
+      "Web Development Specialization",
+      "Database Management Systems",
+      "Software Engineering",
+    ],
+  },
+  {
+    degree: "Masters of Computer Applications (MCA)",
+    institution: "Islamia College of Sceince & Commerce ",
+    period: "2020 Dec - 2022 Feb",
+    grade: "First Class",
+    achievements: [
+      "Web Development Specialization",
+      "Database Management Systems",
+      "Software Engineering",
+    ],
+  },
+];
+
 export const projects = [
   {
     title: "Correspondence Management System (CSM)",
     description:
-      "A document flow management system designed to automate the creation, tracking, approval, and archival of official correspondence within an organization. Built using React.js, the system enables users to manage document lifecycles, from drafting to final approval, with version control and workflow automation. Integrated with backend APIs for real-time tracking and notifications of document status.",
+      "A document flow management system designed to automate the creation, tracking, approval, and archival of official correspondence within an organization. Built using React.js, the system enables users to manage document lifecycles, from drafting to final approval, with version control and workflow automation.",
     technologies: [
       "React",
       "Next.js",
@@ -92,7 +146,7 @@ export const projects = [
   {
     title: "Land Bank Management System",
     description:
-      "A robust web-based platform for managing and tracking land assets, acquisitions, and ownership records. Developed using React.js, the system provides comprehensive features for handling land asset details, including ownership information, title deeds, and associated legal documents. Integrated with backend APIs for real-time data synchronization, the system ensures seamless retrieval and updating of land and document records.",
+      "A robust web-based platform for managing and tracking land assets, acquisitions, and ownership records. Developed using React.js with comprehensive features for handling land asset details, including ownership information, title deeds, and associated legal documents.",
     technologies: [
       "React",
       "Next.js",
@@ -111,7 +165,7 @@ export const projects = [
   {
     title: "Parent-Teacher Meeting (PTM) Management System",
     description:
-      "A web application developed to facilitate efficient scheduling and management of parent-teacher meetings. Built using React.js with a responsive user interface, the platform allows parents and teachers to book, manage, and track meeting appointments. Integrated with backend APIs for real-time meeting updates, notifications, and feedback collection.",
+      "A web application developed to facilitate efficient scheduling and management of parent-teacher meetings. Built using React.js with a responsive user interface, allowing parents and teachers to book, manage, and track meeting appointments.",
     technologies: [
       "React",
       "Next.js",
@@ -122,15 +176,14 @@ export const projects = [
       "React Query",
     ],
     image: ptm.src,
-    // liveUrl: "#",
     githubUrl: "#",
     featured: false,
     gradient: "from-emerald-500 to-teal-600",
   },
   {
-    title: "Service Booking",
+    title: "Service Booking Platform",
     description:
-      "A full-stack web application built with Node.js that enables users to discover, book, and manage various services online. The platform allows service providers to list their offerings with detailed descriptions, pricing, and availability schedules, while customers can browse services, make reservations, and track their bookings in real-time.",
+      "A full-stack web application built with Node.js that enables users to discover, book, and manage various services online. The platform allows service providers to list their offerings with detailed descriptions, pricing, and availability schedules.",
     technologies: ["Node.js", "Express", "Sql", "Mysql"],
     image:
       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&auto=format",
@@ -140,9 +193,9 @@ export const projects = [
     gradient: "from-orange-500 to-red-600",
   },
   {
-    title: "Traesury Today - Digital Magazine",
+    title: "Treasury Today - Digital Magazine",
     description:
-      "Traesury Today is a digital magazine dedicated to delivering in-depth analysis and insights on finance, business, corporate strategies, and banking trends. allowing readers to explore a wide range of topics including market analysis, investment strategies, corporate governance, and financial regulations. The magazine features expert interviews, opinion pieces, and timely articles that cater to finance professionals and corporate leaders. Integrated with a content management system (CMS) for seamless publishing and updates.",
+      "A digital magazine dedicated to delivering in-depth analysis and insights on finance, business, corporate strategies, and banking trends. Features expert interviews, opinion pieces, and timely articles with integrated CMS for seamless publishing.",
     technologies: ["HTML", "CSS", "Sql", "Mysql"],
     image: tt.src,
     liveUrl: "#",
@@ -153,7 +206,7 @@ export const projects = [
   {
     title: "Vetic - Power Consumption Tracker App",
     description:
-      "A mobile application designed to monitor and track real-time power consumption for households and businesses. Developed using React Native, Vetic allows users to view energy usage, set consumption goals, and receive notifications on power-saving tips",
+      "A mobile application designed to monitor and track real-time power consumption for households and businesses. Developed using React Native, allowing users to view energy usage, set consumption goals, and receive power-saving notifications.",
     technologies: ["React Native", "Tailwind CSS"],
     image:
       "https://cdn.dribbble.com/userupload/17603308/file/original-744935f2c4583e789a9feddbf02df1e9.png?format=webp&resize=400x300&vertical=center",
