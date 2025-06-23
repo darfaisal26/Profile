@@ -15,7 +15,7 @@ import {
   Calendar,
   Award,
   ChevronRight,
-  Star,
+  // Star,
   BookOpen,
   Menu,
   X,
