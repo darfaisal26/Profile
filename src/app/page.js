@@ -410,7 +410,7 @@ const Portfolio = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white relative">
+    <div className=" bg-slate-900 text-white relative">
       <AnimatedBackground />
 
       {/* Navigation */}
@@ -495,18 +495,18 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section
+      {/* <section
         id="hero"
         className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-4xl mx-auto text-center">
-          {/* <div className="mb-8 animate-fade-in">
+          <div className="mb-8 animate-fade-in">
             <img
               src={personalInfo.avatar}
               alt={personalInfo.name}
               className="w-32 h-32 rounded-full mx-auto mb-8 border-4 border-cyan-400 shadow-xl animate-float"
             />
-          </div> */}
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-slide-up">
             {personalInfo.name}
           </h1>
@@ -548,7 +548,7 @@ const Portfolio = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -573,6 +573,29 @@ const Portfolio = () => {
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-cyan-400" />
                   <span className="text-gray-300">{personalInfo.location}</span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row  space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-up animation-delay-600">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Get In Touch</span>
+                </a>
+                <div className="flex space-x-4 justify-center items-center">
+                  <a
+                    href={personalInfo.github}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+                  >
+                    <Github className="w-6 h-6" />
+                  </a>
+                  <a
+                    href={personalInfo.linkedin}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+                  >
+                    <Linkedin className="w-6 h-6" />
+                  </a>
                 </div>
               </div>
             </div>
