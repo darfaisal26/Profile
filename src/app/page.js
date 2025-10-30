@@ -1,391 +1,191 @@
 "use client";
-// import React, { useState } from "react";
-// import {
-//   User,
-//   Code,
-//   Briefcase,
-//   FolderOpen,
-//   GraduationCap,
-//   Menu,
-//   X,
-// } from "lucide-react";
-
-// import AboutMe from "@/components/NewView/AboutMe";
-// import Skills from "@/components/NewView/Skills";
-// import Experience from "@/components/NewView/Experience";
-// import Education from "@/components/NewView/Education";
-// import Newprojects from "@/components/NewView/projects";
-// import NewpersonalInfo from "@/components/NewView/personalInfo";
-
-// const Portfolio = () => {
-//   const [activeSection, setActiveSection] = useState("about");
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-//   const navItems = [
-//     {
-//       id: "about",
-//       label: "About Me",
-//       icon: User,
-//       gradient: "from-blue-500 to-cyan-500",
-//     },
-//     {
-//       id: "skills",
-//       label: "Skills",
-//       icon: Code,
-//       gradient: "from-purple-500 to-pink-500",
-//     },
-//     {
-//       id: "experience",
-//       label: "Experience",
-//       icon: Briefcase,
-//       gradient: "from-emerald-500 to-teal-500",
-//     },
-//     {
-//       id: "education",
-//       label: "Education",
-//       icon: GraduationCap,
-//       gradient: "from-orange-500 to-red-500",
-//     },
-//     {
-//       id: "projects",
-//       label: "Projects",
-//       icon: FolderOpen,
-//       gradient: "from-indigo-500 to-purple-500",
-//     },
-//   ];
-//   const renderContent = () => {
-//     switch (activeSection) {
-//       case "about":
-//         return <AboutMe />;
-
-//       case "skills":
-//         return <Skills />;
-
-//       case "experience":
-//         return <Experience />;
-
-//       case "education":
-//         return <Education />;
-
-//       case "projects":
-//         return <Newprojects />;
-
-//       default:
-//         return null;
-//     }
-//   };
-
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white">
-//       {/* Animated Background */}
-//       <div className="fixed inset-0 opacity-[0.03]">
-//         <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
-//       </div>
-//       <div className="flex ">
-//         {/* Mobile Menu Button */}
-//         <button
-//           className="lg:hidden fixed top-4 left-4 z-30 p-2 rounded-md bg-gray-800 text-white"
-//           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-//         >
-//           {isSidebarOpen ? (
-//             <X className="w-6 h-6" />
-//           ) : (
-//             <>
-//               <Menu className="w-6 h-6" />
-//             </>
-//           )}
-//         </button>
-
-//         {/* Sidebar */}
-//         <div
-//           className={`fixed h-screen  left-0 top-0  w-80 bg-gradient-to-b from-gray-800/95 to-gray-900/95 backdrop-blur-lg border-r border-gray-700/50 p-6  z-20 transition-transform duration-300
-//           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-//           lg:translate-x-0 lg:static lg:block`}
-//         >
-//           {/* Sidebar content (profile, nav, etc.) goes here */}
-
-//           <NewpersonalInfo />
-
-//           {/* Navigation */}
-//           <nav className="space-y-2">
-//             {navItems.map((item) => {
-//               const Icon = item.icon;
-//               return (
-//                 <button
-//                   key={item.id}
-//                   onClick={() => setActiveSection(item.id)}
-//                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-//                     activeSection === item.id
-//                       ? `bg-gradient-to-r ${item.gradient} text-white shadow-lg transform scale-105`
-//                       : "text-gray-400 hover:text-white hover:bg-gray-700/50"
-//                   }`}
-//                 >
-//                   <Icon className="w-5 h-5" />
-//                   <span className="font-medium">{item.label}</span>
-//                 </button>
-//               );
-//             })}
-//           </nav>
-//         </div>
-
-//         {/* Main Content */}
-//         <div className="flex-1 p-8 ml-0 h-screen overflow-y-auto">
-//           <div className="lg:hidden">
-//             <NewpersonalInfo />
-//           </div>
-//           <div className="max-w-6xl mx-auto">{renderContent()}</div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Portfolio;
 import React, { useState, useEffect } from "react";
 import {
-  ChevronDown,
   Mail,
   Phone,
   MapPin,
   Github,
   Linkedin,
-  ExternalLink,
   Calendar,
   Award,
-  Code,
-  Briefcase,
-  GraduationCap,
-  User,
   Menu,
   X,
+  ChevronRight,
 } from "lucide-react";
-import Link from "next/link";
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
-  // Data from your provided file
   const personalInfo = {
     name: "Faisal Nazir",
     title: "Full Stack Developer",
     email: "iamfaisal779@gmail.com",
     phone: "9596438189",
-    location: "Srinagar J&K India",
+    location: "Srinagar, J&K, India",
     github: "https://github.com/darfaisal26",
     linkedin: "https://www.linkedin.com/in/faisal-nazir-31ba22244/",
-    bio: "Full-stack developer with 2+ years of experience building robust, scalable web applications from concept to deployment. Proficient in modern frontend frameworks and backend technologies, with a strong focus on performance optimization and user experience. I thrive on solving complex problems through clean, maintainable code and enjoy collaborating across teams to deliver innovative digital solutions that drive business growth.",
+    bio: "Full-stack developer with near about 3 years of experience building robust, scalable web applications from concept to deployment. Proficient in modern frontend frameworks and backend technologies, with a strong focus on performance optimization and user experience.",
     avatar:
-      "https://media.licdn.com/dms/image/v2/D5603AQENjpHzpGedNA/profile-displayphoto-shrink_800_800/B56ZeIrv4lGQAo-/0/1750344860993?e=1755734400&v=beta&t=dM88rD-8Te5Ccvo_APYjQGHO_rVcREN1YaOHevHrquw",
-  };
-
-  const skillIcons = {
-    "React Native": "⚛️",
-    React: "⚛️",
-    "Next.js": "▲",
-    TypeScript: "📘",
-    "Tailwind CSS": "🎨",
-    "Node.js": "🟢",
-    Express: "🚀",
-    Git: "📋",
-    MongoDB: "🍃",
-    JavaScript: "💛",
-    CSS3: "🎨",
-    HTML5: "🔥",
-    "React Redux": "🔄",
-    "Redux Toolkit": "🛠️",
-    Zustand: "🐻",
-    "React Hook Form": "📝",
-    Zod: "✅",
-    "React Query": "🔄",
-    "RTK Query": "⚡",
-    Sql: "🗄️",
-    Mysql: "🐬",
-    "Azure Boards": "📋",
+      "https://media.licdn.com/dms/image/v2/D5603AQENjpHzpGedNA/profile-displayphoto-shrink_800_800/B56ZeIrv4lGQAo-/0/1750344860993?e=1763596800&v=beta&t=q7BJcsFNeAjnaHmRC8XUdECJybF0FzcEpJDR-FfE-o0",
   };
 
   const skills = {
-    "Frontend Development": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-    ],
-    "Backend Development": ["Node.js", "Express", "Mysql", "MongoDB", "Sql"],
+    Frontend: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"],
+    Backend: ["Node.js", "Express", "MySQL", "MongoDB"],
     "State Management": [
-      "React Redux",
       "Redux Toolkit",
       "Zustand",
       "React Query",
       "RTK Query",
     ],
-    "Tools & Others": [
-      "Git",
-      "Azure Boards",
-      "React Hook Form",
-      "Zod",
-      "React Native",
-    ],
+    Tools: ["Git", "Azure Boards", "React Hook Form", "Zod"],
   };
 
   const workExperience = [
     {
-      company: "Aseef It Holding Co.",
+      company: "Aseef IT Holding Co.",
       position: "Full Stack Developer",
       duration: "March 2023 - Present",
-      location: "Srinagar J&K India",
-      description: [
-        "Built and deployed full-stack web applications using React.js, Next.js (with SSR), Express.js, and MySQL, delivering scalable, production-ready solutions for real-world business needs",
-        "Designed and integrated RESTful APIs with efficient MySQL queries, enabling seamless data exchange between frontend and backend, with secure authentication and role-based access",
-        "Managed complex state and dynamic forms using Redux Toolkit and RTK Query, improving data flow, API integration, and user experience across multi-step form modules",
-        "Worked on live project deployments and issue debugging, collaborating with cross-functional teams to ensure smooth feature rollouts, production stability, and rapid bug resolution",
-        "Utilized Azure Boards for sprint planning, task tracking, and maintaining agile workflows, ensuring project transparency, accountability, and consistent delivery cycles",
+      location: "Srinagar, J&K, India",
+      highlights: [
+        "Built and deployed full-stack applications using React.js, Next.js, Express.js, and MySQL",
+        "Designed RESTful APIs with secure authentication and role-based access control",
+        "Managed complex state using Redux Toolkit and RTK Query for seamless data flow",
+        "Collaborated with cross-functional teams using Azure Boards for agile workflows",
       ],
       technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "TypeScript",
-        "Next.js",
         "React",
+        "Next.js",
+        "TypeScript",
         "Node.js",
-        "Express",
-        "Azure Boards",
-        "Mysql",
-        "Git",
+        "MySQL",
+        "Redux Toolkit",
       ],
-      gradient: "from-blue-600 via-indigo-600 to-purple-700",
     },
   ];
 
   const education = [
     {
-      degree: "Bachelor of Computer Applications (BCA)",
-      institution: "Amar Singh College ",
-      period: "2017 May - 2020 Aug",
+      degree: "Master of Computer Applications (MCA)",
+      institution: "Islamia College of Science & Commerce",
+      period: "2020 - 2022",
       grade: "First Class",
-      achievements: [
-        "Web Development Specialization",
-        "Database Management Systems",
-        "Software Engineering",
-      ],
     },
     {
-      degree: "Masters of Computer Applications (MCA)",
-      institution: "Islamia College of Sceince & Commerce ",
-      period: "2020 Dec - 2022 Feb",
+      degree: "Bachelor of Computer Applications (BCA)",
+      institution: "Amar Singh College",
+      period: "2017 - 2020",
       grade: "First Class",
-      achievements: [
-        "Web Development Specialization",
-        "Database Management Systems",
-        "Software Engineering",
-      ],
     },
   ];
 
   const projects = [
     {
-      title: "Correspondence Management System (CSM)",
+      title: "Employee Attendance & Portal System",
       description:
-        "A document flow management system designed to automate the creation, tracking, approval, and archival of official correspondence within an organization. Built using React.js, the system enables users to manage document lifecycles, from drafting to final approval, with version control and workflow automation.",
+        "Enterprise-grade attendance management system with employee self-service portal. Features real-time attendance tracking, leave management, shift scheduling, and comprehensive reporting dashboards for HR and management.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Redux Toolkit",
+        "MySQL",
+        "Tailwind CSS",
+      ],
+      image:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Correspondence Management System",
+      description:
+        "Document flow management system automating creation, tracking, and approval of official correspondence with version control and workflow automation.",
       technologies: [
         "React",
         "Next.js",
         "TypeScript",
-        "JavaScript",
-        "Tailwind CSS",
         "Redux Toolkit",
-        "React Query",
+        "Tailwind CSS",
       ],
       image:
-        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop&auto=format",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-      gradient: "from-cyan-500 to-blue-600",
+        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
     },
     {
       title: "Land Bank Management System",
       description:
-        "A robust web-based platform for managing and tracking land assets, acquisitions, and ownership records. Developed using React.js with comprehensive features for handling land asset details, including ownership information, title deeds, and associated legal documents.",
+        "Comprehensive platform for managing land assets, acquisitions, and ownership records with legal document handling.",
       technologies: [
         "React",
         "Next.js",
         "TypeScript",
-        "JavaScript",
-        "Tailwind CSS",
         "Redux Toolkit",
         "React Query",
       ],
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=500&fit=crop&auto=format",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: true,
-      gradient: "from-purple-500 to-pink-600",
+        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=500&fit=crop",
     },
     {
-      title: "Parent-Teacher Meeting (PTM) Management System",
+      title: "PTM Management System",
       description:
-        "A web application developed to facilitate efficient scheduling and management of parent-teacher meetings. Built using React.js with a responsive user interface, allowing parents and teachers to book, manage, and track meeting appointments.",
+        "Web application facilitating efficient scheduling and management of parent-teacher meetings with booking capabilities.",
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+      image:
+        "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Zaloon - Salon Services Platform",
+      description:
+        "Full-stack MERN salon booking platform enabling customers to discover salons, book appointments, and manage services. Features include real-time availability, service catalog management, booking calendar, payment processing, and comprehensive admin dashboard for salon management.",
       technologies: [
         "React",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
+        "Node.js",
+        "Express",
+        "MySQL",
+        "Redux",
         "Tailwind CSS",
-        "Redux Toolkit",
-        "React Query",
       ],
       image:
-        "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&h=500&fit=crop&auto=format",
-      githubUrl: "#",
-      featured: false,
-      gradient: "from-emerald-500 to-teal-600",
+        "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=500&fit=crop",
     },
     {
-      title: "Service Booking Platform",
+      title: "Treasury Today Magazine",
       description:
-        "A full-stack web application built with Node.js that enables users to discover, book, and manage various services online. The platform allows service providers to list their offerings with detailed descriptions, pricing, and availability schedules.",
-      technologies: ["Node.js", "Express", "Sql", "Mysql"],
+        "Digital magazine delivering finance and business insights with integrated CMS for seamless publishing.",
+      technologies: ["HTML", "CSS", "MySQL"],
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&auto=format",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-      gradient: "from-orange-500 to-red-600",
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=500&fit=crop",
     },
     {
-      title: "Treasury Today - Digital Magazine",
+      title: "Vetic Power Tracker",
       description:
-        "A digital magazine dedicated to delivering in-depth analysis and insights on finance, business, corporate strategies, and banking trends. Features expert interviews, opinion pieces, and timely articles with integrated CMS for seamless publishing.",
-      technologies: ["HTML", "CSS", "Sql", "Mysql"],
-      image:
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=500&fit=crop&auto=format",
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false,
-      gradient: "from-yellow-500 to-orange-600",
-    },
-    {
-      title: "Vetic - Power Consumption Tracker App",
-      description:
-        "A mobile application designed to monitor and track real-time power consumption for households and businesses. Developed using React Native, allowing users to view energy usage, set consumption goals, and receive power-saving notifications.",
+        "Mobile app monitoring real-time power consumption with energy usage goals and notifications.",
       technologies: ["React Native", "Tailwind CSS"],
       image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&auto=format",
-      githubUrl: "#",
-      featured: false,
-      gradient: "from-purple-500 to-indigo-600",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop",
     },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
+
+      const sections = [
+        "hero",
+        "about",
+        "skills",
+        "experience",
+        "projects",
+        "education",
+      ];
+      const current = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -395,98 +195,79 @@ const Portfolio = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
 
-  const AnimatedBackground = () => (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-      <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-    </div>
-  );
+  const navItems = [
+    { id: "hero", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "education", label: "Education" },
+  ];
 
   return (
-    <div className=" bg-slate-900 text-white relative">
-      <AnimatedBackground />
-
+    <div className="min-h-screen bg-slate-50 text-gray-900">
       {/* Navigation */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all bg-white duration-300 ${
+          isScrolled ? "bg-white shadow-md" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                {personalInfo.name}
-              </h1>
-            </div>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            <button
+              onClick={() => scrollToSection("hero")}
+              className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              FN
+            </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {[
-                  { id: "hero", label: "Home", icon: User },
-                  { id: "about", label: "About", icon: User },
-                  { id: "skills", label: "Skills", icon: Code },
-                  { id: "experience", label: "Experience", icon: Briefcase },
-                  { id: "projects", label: "Projects", icon: Code },
-                  { id: "education", label: "Education", icon: GraduationCap },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="px-3 py-2 rounded-md text-sm font-medium hover:text-cyan-400 transition-colors duration-200 flex items-center space-x-1"
-                  >
-                    <item.icon className="w-4 h-4" />
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              >
-                {isMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-900/95 backdrop-blur-md">
-              {[
-                { id: "hero", label: "Home", icon: User },
-                { id: "about", label: "About", icon: User },
-                { id: "skills", label: "Skills", icon: Code },
-                { id: "experience", label: "Experience", icon: Briefcase },
-                { id: "projects", label: "Projects", icon: Code },
-                { id: "education", label: "Education", icon: GraduationCap },
-              ].map((item) => (
+            <div className="hidden md:flex items-center space-x-1">
+              {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="w-full text-left px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400 transition-colors duration-200 flex items-center space-x-2"
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    activeSection === item.id
+                      ? "text-blue-600 bg-blue-50"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  }`}
                 >
-                  <item.icon className="w-4 h-4" />
-                  <span>{item.label}</span>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-6 py-4 space-y-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                >
+                  {item.label}
                 </button>
               ))}
             </div>
@@ -495,147 +276,127 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      {/* <section
-        id="hero"
-        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 animate-fade-in">
-            <img
-              src={personalInfo.avatar}
-              alt={personalInfo.name}
-              className="w-32 h-32 rounded-full mx-auto mb-8 border-4 border-cyan-400 shadow-xl animate-float"
-            />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-slide-up">
-            {personalInfo.name}
-          </h1>
-          <p className="text-2xl md:text-3xl text-gray-300 mb-8 animate-slide-up animation-delay-200">
-            {personalInfo.title}
-          </p>
-          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-slide-up animation-delay-400">
-            {personalInfo.bio}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-up animation-delay-600">
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Get In Touch</span>
-            </a>
-            <div className="flex space-x-4">
-              <a
-                href={personalInfo.github}
-                className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
-              >
-                <Github className="w-6 h-6" />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-          <div className="mt-16 animate-bounce">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              <ChevronDown className="w-8 h-8" />
-            </button>
-          </div>
-        </div>
-      </section> */}
-
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            About Me
-          </h2>
+      <section id="hero" className="pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-lg text-gray-300 leading-relaxed">
-                {personalInfo.bio}
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-cyan-400" />
-                  <span className="text-gray-300">{personalInfo.email}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-cyan-400" />
-                  <span className="text-gray-300">{personalInfo.phone}</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-cyan-400" />
-                  <span className="text-gray-300">{personalInfo.location}</span>
-                </div>
+              <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
+                Full Stack Developer
               </div>
-              <div className="flex flex-col sm:flex-row  space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-up animation-delay-600">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                Hi, I'm <span className="text-blue-600">Faisal Nazir</span>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Building scalable web applications with modern technologies and
+                best practices
+              </p>
+              <div className="flex flex-wrap gap-4">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-cyan-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
                 >
-                  <Mail className="w-5 h-5" />
-                  <span>Get In Touch</span>
+                  Get In Touch
+                  <ChevronRight className="w-5 h-5 ml-2" />
                 </a>
-                <div className="flex space-x-4 justify-center items-center">
+                <div className="flex items-center gap-3">
                   <a
                     href={personalInfo.github}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
                   >
-                    <Github className="w-6 h-6" />
+                    <Github className="w-5 h-5" />
                   </a>
                   <a
                     href={personalInfo.linkedin}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
                   >
-                    <Linkedin className="w-6 h-6" />
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <Mail className="w-5 h-5 text-gray-600" />
                   </a>
                 </div>
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-75"></div>
-              <img
-                src={personalInfo.avatar}
-                alt={personalInfo.name}
-                className="relative rounded-lg shadow-2xl"
-              />
+              <div className="relative w-full aspect-square max-w-md mx-auto">
+                <div className="absolute inset-0 bg-blue-100 rounded-2xl transform rotate-6"></div>
+                <img
+                  src={personalInfo.avatar}
+                  alt={personalInfo.name}
+                  className="relative rounded-2xl shadow-xl w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-zinc-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+            About Me
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="md:col-span-2 space-y-6">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                {personalInfo.bio}
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                I thrive on solving complex problems through clean, maintainable
+                code and enjoy collaborating across teams to deliver innovative
+                digital solutions that drive business growth.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-gray-600 hover:text-blue-600 transition-colors break-all"
+                >
+                  {personalInfo.email}
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                <span className="text-gray-600">{personalInfo.phone}</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                <span className="text-gray-600">{personalInfo.location}</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section
-        id="skills"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50"
-      >
+      <section id="skills" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Skills & Technologies
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.entries(skills).map(([category, skillList]) => (
               <div
                 key={category}
-                className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 hover:bg-slate-700/70 transition-all duration-300 transform hover:scale-105"
+                className="p-6 border border-gray-200 rounded-xl hover:border-blue-200 hover:shadow-md transition-all"
               >
-                <h3 className="text-xl font-semibold mb-4 text-cyan-400">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   {category}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {skillList.map((skill) => (
-                    <div key={skill} className="flex items-center space-x-3">
-                      <span className="text-2xl">
-                        {skillIcons[skill] || "🔧"}
-                      </span>
-                      <span className="text-gray-300">{skill}</span>
+                    <div key={skill} className="text-gray-600">
+                      {skill}
                     </div>
                   ))}
                 </div>
@@ -646,55 +407,56 @@ const Portfolio = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      <section id="experience" className="py-20 px-6 bg-zinc-100">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Work Experience
           </h2>
           {workExperience.map((job, index) => (
-            <div key={index} className="relative mb-12">
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-8 hover:bg-slate-700/70 transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {job.position}
-                    </h3>
-                    <p className="text-cyan-400 text-lg font-semibold">
-                      {job.company}
-                    </p>
-                    <p className="text-gray-400 flex items-center space-x-2">
+            <div
+              key={index}
+              className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-shadow"
+            >
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {job.position}
+                  </h3>
+                  <p className="text-lg text-blue-600 font-semibold mb-2">
+                    {job.company}
+                  </p>
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                    <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      <span>{job.duration}</span>
-                    </p>
-                    <p className="text-gray-400 flex items-center space-x-2">
+                      {job.duration}
+                    </span>
+                    <span className="flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
-                      <span>{job.location}</span>
-                    </p>
+                      {job.location}
+                    </span>
                   </div>
                 </div>
-                <div className="mb-6">
-                  <ul className="space-y-3">
-                    {job.description.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="text-gray-300 flex items-start space-x-2"
-                      >
-                        <span className="text-cyan-400 mt-1.5 text-sm">▪</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {job.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-slate-700 text-cyan-400 rounded-full text-sm font-medium hover:bg-slate-600 transition-colors duration-200"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                {job.highlights.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-3 text-gray-600"
+                  >
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                {job.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
@@ -702,70 +464,46 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Section */}
-      <section
-        id="projects"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50"
-      >
+      <section id="projects" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Featured Projects
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-slate-800/70 backdrop-blur-sm rounded-lg overflow-hidden hover:bg-slate-700/70 transition-all duration-300 transform hover:scale-105"
+                className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden bg-gray-100">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-30`}
-                  ></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-white">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 text-sm line-clamp-3">
+                  <p className="text-gray-600 mb-4 line-clamp-3">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-slate-700 text-cyan-400 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-slate-700 text-gray-400 rounded text-xs">
-                        +{project.technologies.length - 3} more
+                      <span className="px-2 py-1 bg-gray-100 text-gray-500 rounded text-xs">
+                        +{project.technologies.length - 3}
                       </span>
                     )}
                   </div>
-                  {/* <div className="flex space-x-4">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        className="flex items-center space-x-1 text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">Live Demo</span>
-                      </a>
-                    )}
-                    <a
-                      href={project.githubUrl}
-                      className="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span className="text-sm">Code</span>
-                    </a>
-                  </div> */}
                 </div>
               </div>
             ))}
@@ -774,46 +512,36 @@ const Portfolio = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+      <section id="education" className="py-20 px-6 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
             Education
           </h2>
-          <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {education.map((edu, index) => (
               <div
                 key={index}
-                className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 hover:bg-slate-700/70 transition-all duration-300"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {edu.degree}
                     </h3>
-                    <p className="text-cyan-400 font-semibold">
+                    <p className="text-blue-600 font-semibold mb-2">
                       {edu.institution}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-gray-400 flex items-center space-x-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{edu.period}</span>
-                    </p>
-                    <p className="text-green-400 flex items-center space-x-2">
-                      <Award className="w-4 h-4" />
-                      <span>{edu.grade}</span>
-                    </p>
-                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {edu.achievements.map((achievement, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-slate-700 text-purple-400 rounded-full text-sm font-medium"
-                    >
-                      {achievement}
-                    </span>
-                  ))}
+                <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {edu.period}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Award className="w-4 h-4 text-green-600" />
+                    {edu.grade}
+                  </span>
                 </div>
               </div>
             ))}
@@ -822,36 +550,41 @@ const Portfolio = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900/90 backdrop-blur-sm py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400 mb-4">
-            © 2024 {personalInfo.name}. All rights reserved.
-          </p>
-          <div className="flex justify-center space-x-6">
-            <Link
-              href={personalInfo.github}
-              className="text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              <Github className="w-6 h-6" />
-            </Link>
-            <Link
-              href={personalInfo.linkedin}
-              className="text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              <Linkedin className="w-6 h-6" />
-            </Link>
-            <Link
-              href={`mailto:${personalInfo.email}`}
-              className="text-gray-400 hover:text-white transition-colors duration-300"
-            >
-              <Mail className="w-6 h-6" />
-            </Link>
+      {/* <footer className="py-12 px-6 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-gray-600">
+              © 2024 Faisal Nazir. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <Github className="w-5 h-5 text-gray-600" />
+              </a>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <Linkedin className="w-5 h-5 text-gray-600" />
+              </a>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <Mail className="w-5 h-5 text-gray-600" />
+              </a>
+            </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };
 
-
-export default Portfolio
+export default Portfolio;
