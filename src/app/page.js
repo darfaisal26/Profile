@@ -317,7 +317,7 @@ const Portfolio = () => {
                   </a>
                   <a
                     href={`mailto:${personalInfo.email}`}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                    className="p-3 border border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
                   >
                     <Mail className="w-5 h-5 text-gray-600" />
                   </a>
